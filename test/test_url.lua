@@ -67,4 +67,15 @@ function test_GetUrlType_OK()
     lu.assert_equals(uu.get_url_type(ed2k_url),"ed2k")
 end
 
+function test_EncodeDecode()
+    -- local url = "ftp://g:g@tv.dl1234.com:2121/欢乐颂HDTV42.mp4"
+    local url = "http://www.voidtools.com/Everything-1.4.1.877.x64-Setup.exe"
+    local e = uu.encode(url)
+    print(e)
+    local d = uu.decode(url)
+    print(d)
+    lu.assert_equals(url,d)
+end
+
+
 os.exit(lu.LuaUnit.run())

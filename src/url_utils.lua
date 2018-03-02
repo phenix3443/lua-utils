@@ -80,4 +80,15 @@ function export.get_infohash(url)
     return info.infohash
 end
 
+function export.encode(url)
+    -- url编码
+    local s = string.gsub(url, "([^%w%.%- ])", function(c) return string.format("%%%02X", string.byte(c)) end)
+    return string.gsub(s, " ", "+")
+end
+
+function export.decode(url)
+    local s = string.gsub(url, '%%(%x%x)', function(h) return string.char(tonumber(h, 16)) end)
+    return s
+end
+
 return export
